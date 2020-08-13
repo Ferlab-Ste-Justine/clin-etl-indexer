@@ -11,7 +11,7 @@ object HPO extends App {
     .appName(s"HPOIndexer").getOrCreate()
 
 
-  val matches = Seq(
+  private val matches = Seq(
     "HP:0001197",
     "HP:0001507",
     "HP:0000478",
@@ -31,15 +31,12 @@ object HPO extends App {
 
   import spark.implicits._
 
-  //  println(filtered.count)
   private val dataSet = ReadHPOData.fromJson(spark).as[HPOEntry]
-  private val filteredDataSet = Utils.filterByAncestors(dataSet, matches)
+  private val filteredDataSet = Utils.compactHPOEntries(Utils.filterByAncestors(dataSet, matches))
 
   filteredDataSet.show()
   // Save to ES
   filteredDataSet.toDF.saveToEs("sparktest")
-
-
 }
 
 object Utils {
