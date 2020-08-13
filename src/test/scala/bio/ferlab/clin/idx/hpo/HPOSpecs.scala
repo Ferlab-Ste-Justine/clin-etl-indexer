@@ -16,9 +16,8 @@ class HPOSpecs extends AnyFlatSpec with SparkSessionTrait with Matchers {
       "HP:0000707"
     )
 
-    val filtered = Utils.filterByAncestors(dataSet, matches);
+    val filtered = Utils.filterByAncestors(dataSet, matches)
 
-    filtered.count should equal (2)
+    filtered.count should equal(2)
   }
-
 }
