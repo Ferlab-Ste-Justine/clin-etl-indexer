@@ -4,8 +4,6 @@ import org.apache.spark.sql.{Dataset, SparkSession}
 
 
 object Utils {
-
-
   /**
    * Filters a Dataset to remove all the entries without any ancestor found in @param matches.
    *
@@ -23,13 +21,16 @@ object Utils {
   }
 
   def compactEntry(entry: HPOEntry): CompactHPOEntry = {
-    CompactHPOEntry(entry.id, entry.name, entry.parents, entry.ancestors.map(compactAncestor))
+    CompactHPOEntry(entry.id, entry.name, entry.parents.map(compactParent), entry.ancestors.map(compactAncestor))
+  }
+
+  def compactParent(parent: ParentData): CompactParentData = {
+    CompactParentData(parent.id, parent.name)
   }
 
   def compactAncestor(entry: AncestorData): CompactAncestorData = {
     CompactAncestorData(entry.id, entry.name)
   }
-
 }
 
 
