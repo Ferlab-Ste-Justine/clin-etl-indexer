@@ -3,10 +3,12 @@ package bio.ferlab.clin.idx.hpo
 import org.apache.spark.sql.SparkSession
 import org.elasticsearch.spark.sql.sparkDatasetFunctions
 
-object HPO extends App{
+object HPO extends App {
+  private implicit val spark: SparkSession = SparkSession.builder().appName(s"HPOIndexer").getOrCreate()
   private val path: String = args(0)
   private val esIndexName: String = args(1)
-  start(path, esIndexName)(SparkSession.builder().appName(s"HPOIndexer").getOrCreate())
+
+  start(path, esIndexName)
 
   def start(path: String, esIndexName: String)(implicit spark: SparkSession): Unit = {
     val matches = Seq(
@@ -32,6 +34,6 @@ object HPO extends App{
     val dataSet = spark.read.json(path).as[HPOEntry]
     val filteredDataSet = Utils.compactHPOEntries(Utils.filterByAncestors(dataSet, matches))
 
-//    filteredDataSet.toDF.saveToEs(esIndexName)
+    filteredDataSet.toDF.saveToEs(esIndexName)
   }
 }
