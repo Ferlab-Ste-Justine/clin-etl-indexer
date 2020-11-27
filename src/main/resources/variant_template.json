@@ -185,6 +185,25 @@
                 "ac": {
                   "type": "long"
                 },
+                "an": {
+                  "type": "long"
+                },
+                "af": {
+                  "type": "float"
+                }
+              }
+            },
+            "topmed_bravo": {
+              "properties": {
+                "ac": {
+                  "type": "long"
+                },
+                "an": {
+                  "type": "long"
+                },
+                "hom": {
+                  "type": "long"
+                },
                 "af": {
                   "type": "float"
                 }
@@ -193,6 +212,12 @@
             "exac": {
               "properties": {
                 "ac": {
+                  "type": "long"
+                },
+                "an": {
+                  "type": "long"
+                },
+                "hom": {
                   "type": "long"
                 },
                 "af": {
@@ -205,6 +230,12 @@
                 "ac": {
                   "type": "long"
                 },
+                "an": {
+                  "type": "long"
+                },
+                "hom": {
+                  "type": "long"
+                },
                 "af": {
                   "type": "float"
                 }
@@ -213,6 +244,12 @@
             "gnomad_genomes_3_0": {
               "properties": {
                 "ac": {
+                  "type": "long"
+                },
+                "an": {
+                  "type": "long"
+                },
+                "hom": {
                   "type": "long"
                 },
                 "af": {

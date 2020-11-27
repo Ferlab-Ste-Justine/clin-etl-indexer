@@ -6,7 +6,7 @@ import org.elasticsearch.spark.sql._
 
 object Indexer extends App {
 
-  val Array(input, batchId) = args
+  val Array(input, batchId, release) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
     .appName(s"Indexer").getOrCreate()
@@ -15,7 +15,7 @@ object Indexer extends App {
 
   val df = spark.read.json(input).withColumn("id", sha1(concat($"chromosome", $"start", $"reference", $"alternate")))
 
-  df.saveToEs(s"variants_re_${batchId.toLowerCase()}/_doc", Map("es.mapping.id" -> "id"))
+  df.saveToEs(s"variants_bt_${batchId.toLowerCase()}_re_${release}/_doc", Map("es.mapping.id" -> "id"))
 
 
 }
