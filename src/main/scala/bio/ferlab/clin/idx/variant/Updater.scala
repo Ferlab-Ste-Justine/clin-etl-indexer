@@ -1,4 +1,4 @@
-package bio.ferlab.clin.idx.examples
+package bio.ferlab.clin.idx.variant
 
 import org.apache.spark.sql.SparkSession
 import org.elasticsearch.spark.sql._
