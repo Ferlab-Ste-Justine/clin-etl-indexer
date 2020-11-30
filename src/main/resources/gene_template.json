@@ -1,0 +1,44 @@
+{
+  "index_patterns": [
+    "genes*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 5
+    },
+    "mappings": {
+      "properties": {
+        "chromosome": {
+          "type": "keyword"
+        },
+        "symbol": {
+          "type": "keyword"
+        },
+        "entrez_gene_id": {
+          "type": "keyword"
+        },
+        "omim_gene_id": {
+          "type": "keyword"
+        },
+        "hgnc": {
+          "type": "keyword"
+        },
+        "ensembl_gene_id": {
+          "type": "keyword"
+        },
+        "location": {
+          "type": "keyword"
+        },
+        "name": {
+          "type": "keyword"
+        },
+        "alias": {
+          "type": "keyword"
+        },
+        "biotype": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
