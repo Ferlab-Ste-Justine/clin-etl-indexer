@@ -6,7 +6,7 @@ import org.elasticsearch.spark.sql._
 
 object Indexer extends App {
 
-  val Array(input, batchId, release) = args
+  val Array(input, release) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
     .appName(s"Indexer").getOrCreate()
