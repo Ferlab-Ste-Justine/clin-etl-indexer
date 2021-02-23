@@ -9,7 +9,9 @@ object Indexer extends App {
   val Array(input, batchId, release) = args
   implicit val spark: SparkSession = SparkSession.builder
     .config("es.index.auto.create", "true")
-    .appName(s"Indexer").getOrCreate()
+    .config("es.write.operation", "index") //reindex data on update. to avoid reindexing use 'upsert' instead.
+    .appName(s"Indexer")
+    .getOrCreate()
 
   import spark.implicits._
 
