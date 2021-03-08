@@ -504,8 +504,11 @@
         },
         "lab_frequencies": {
           "properties": {
-            "OR00201": {
+            "": {
               "properties": {
+                "organization_id": {
+                  "type": "keyword"
+                },
                 "ac": {
                   "type": "long"
                 },
@@ -522,7 +525,26 @@
                   "type": "long"
                 }
               }
+            },
+
+            "properties": {
+              "ac": {
+                "type": "long"
+              },
+              "af": {
+                "type": "float"
+              },
+              "an": {
+                "type": "long"
+              },
+              "het": {
+                "type": "long"
+              },
+              "hom": {
+                "type": "long"
+              }
             }
+          }
           }
         },
         "last_annotation_update": {
